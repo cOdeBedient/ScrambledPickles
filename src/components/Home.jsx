@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { pairPlayers } from '../helperFunctions.jsx'
+import { useNavigate } from "react-router-dom"
 
 
-function Home() {
-  const [players, setPlayers] = useState(Array(8).fill(''));
-  const [pairings, setPairings] = useState(null);
-  const [text, setText] = useState([]);
+function Home({ setPairs }) {
+  const [players, setPlayers] = useState(Array(8).fill(''))
+  const [pairings, setPairings] = useState(null)
+
+  const navigate = useNavigate()
 
   const handleChange = (index, value) => {
     setPlayers((prev) => {
@@ -18,15 +20,14 @@ function Home() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault()
-    const pairs = pairPlayers(players)
-    console.log('pairs', pairs)
-    const rounds = pairs.forEach((round, index) => {
+    const foundPairs = pairPlayers(players)
+    foundPairs.forEach((round, index) => {
       round.forEach((pair, i) => {
-        setText(prev => [...prev, <p>Round{index + 1}, Pair{i + 1}, {pair[0]} and {pair[1]}</p>])
+        setPairs(prev => [...prev, <p>{pair[0]} and {pair[1]}</p>])
       })
     })
-    // })
-    // setPairings(pairElements)
+
+    navigate('/pairs');
   };
 
   return (
@@ -35,9 +36,10 @@ function Home() {
       <form onSubmit={handleSubmit} className="player-form">
         <h2>Enter Player Names</h2>
         {players.map((player, index) => (
-          <div key={index} className="player-input">
-            <label>Player {index + 1}</label>
+          <div className="mb-2" key={index}>
+            <label className="mr-2">Player {index + 1}</label>
             <input
+              className="border-dashed border-2 border-black"
               type="text"
               value={player}
               onChange={(e) => handleChange(index, e.target.value)}
@@ -48,7 +50,6 @@ function Home() {
         ))}
         <button type="submit">Submit</button>
       </form>
-      {text}
     </div>
   );
 }
