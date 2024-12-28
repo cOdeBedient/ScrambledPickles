@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 
 function Home({ setPairs }) {
-  const [players, setPlayers] = useState(Array(9).fill(''))
+  const [players, setPlayers] = useState(Array(8).fill(''))
   const [pairings, setPairings] = useState(null)
 
   const navigate = useNavigate()
@@ -21,13 +21,13 @@ function Home({ setPairs }) {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault()
-    const foundPairs = pair9Players(players)
+    const foundPairs = pair8Players(players)
 
     console.log("foundPairs", foundPairs)
 
     foundPairs.forEach((round, index) => {
       round.forEach((pair, i) => {
-        setPairs(prev => [...prev, <p>{pair[0]} and {pair[1]}</p>])
+        setPairs(prev => [...prev, <p className="text-sm font-bold">{pair[0]} and {pair[1]}</p>])
       })
     })
 
