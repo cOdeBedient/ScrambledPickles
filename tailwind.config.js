@@ -7,6 +7,15 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.text-stroke': {
+          '-webkit-text-stroke': '1px black',  // Stroke width and color
+          'text-stroke': '1px black',          // For other browsers (non-webkit)
+        },
+      });
+    },
+  ],
 }
 
