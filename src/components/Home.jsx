@@ -14,7 +14,7 @@ function Home({ setPlayers, handleSubmit, players, spinning }) {
   }
 
   return (
-    <div className="bg-green-700 h-full bg-[url('pickle-icon.png')] bg-repeat bg-[size:65px_65px] pt-6">
+    <div className="bg-green-700 h-full bg-[url('/pickle-icon.png')] bg-repeat bg-[size:65px_65px] pt-6">
      <h1 className="text-black font-bold text-3xl text-center bg-yellow-400">✣ Scrambled Pickles ✣</h1>
       <form onSubmit={handleSubmit} className="bg-opacity-95 player-form h-[85%] flex flex-col items-center justify-between mt-5 bg-green-600 mx-8 py-2 rounded-tr-3xl rounded-bl-3xl border-solid border-2 border-black drop-shadow-[0_5px_3px_rgba(0,0,0,0.35)]">
         <h2 className="text-lg italic text-black my-2">Enter player names:</h2>
@@ -22,7 +22,7 @@ function Home({ setPlayers, handleSubmit, players, spinning }) {
           <div className="mb-2 flex items-center w-full px-4" key={index}>  
               <label className="w-[80px] rounded-tl-xl px-2 py-1 bg-green-400 border-solid border-r-0 border-2 border-black">Player {index + 1}</label>
               <input
-                className="flex-grow h-8 border-dashed border-2 border-black pl-2 bg-green-200"
+                className="flex-grow h-8 border-dotted border-2 border-black pl-2 bg-green-200"
                 type="text"
                 value={player}
                 onChange={(e) => handleChange(index, e.target.value)}
