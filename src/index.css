@@ -10,3 +10,33 @@ html, body {
   #root {
     height: 100%; /* Ensure the root div takes full height of the viewport */
   }
+
+  @keyframes spinX {
+    0% {
+      transform: rotateX(0deg);
+    }
+    100% {
+      transform: rotateX(1800deg);
+    }
+  }
+  
+  /* Basic styling for the submit button */
+  .submit-btn {
+    display: inline-block;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    /* transition: transform 0.1s ease; Optional: add a small transition effect */
+  }
+  
+  .submit-btn img {
+    width: 100px; /* Adjust based on your needs */
+    height: 50px; /* Adjust based on your needs */
+    /* transition: transform 1s ease; Optional: add a transition to the image */
+  }
+  
+  /* Apply the spinX animation when clicked */
+  .spin {
+    animation: spinX 1s forwards;
+  }
